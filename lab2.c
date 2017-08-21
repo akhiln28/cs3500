@@ -13,6 +13,7 @@ typedef struct solve_{
 void *function(void *value){
 	solve *val = (solve*)value;
 	int i,j;
+	printf("akhil\n");
 	for(i = 0;i < val->n;i++)
 	{
 		for(j = 0;j < val->m;j++)
