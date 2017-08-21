@@ -96,12 +96,12 @@ int main()
 	// {
 	// 	ans[i][j] += m1[i][k]*m2[k][j];
 	// }
-	// for(i = 0;i < n;i++)
-	// {
-	// 	for(j = 0;j < l;j++)
-	// 	{
-	// 		printf("%d ",ans[i][j]);
-	// 	}
-	// 	printf("\n");
-	// }
+	for(i = 0;i < n;i++)
+	{
+		for(j = 0;j < l;j++)
+		{
+			printf("%d ",ans[i][j]);
+		}
+		printf("\n");
+	}
 }
