@@ -66,7 +66,7 @@ int main()
 	int i1 = 0,i2 = (n/threads) - 1;
 	for(i = 0;i < threads;i++)
 	{
-		printf("indices are %d,%d\n",i1,i2);
+		if(i == threads - 1) i2 = n - 1;
 		solve *val = (solve*)malloc(sizeof(solve));
 		val->m1 = m1;
 		val->m2 = m2;
@@ -79,11 +79,6 @@ int main()
 		pthread_create(&arr[i],NULL,function,(void*)val);
 		i1 = i2 + 1;
 		i2 = i1 + (n/threads) - 1;
-		if(i == threads - 1) 
-		{
-			i2 = n - 1;
-			printf("i2 is %d\n",i2);
-		}
 	}
 	for(i = 0;i < threads;i++)
 	{
