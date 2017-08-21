@@ -13,29 +13,20 @@ typedef struct solve_{
 void *function(void *value){
 	solve *val = (solve*)value;
 	int i,j;
-	printf("akhil\n");
-	for(i = 0;i < val->n;i++)
-	{
-		for(j = 0;j < val->m;j++)
-		{
-			printf("%d ",val->m1[i][j]);
-		}
-		printf("\n");
-	}
 	//printf("%d,%d\n",val->i1,val->i2);
 	// printf("%d\n",val->m);
-	// for(i = val->i1;i <= val->i2;i++)
-	// {
-	// 	for(j = 0;j <= val->l - 1;j++)
-	// 	{
-	// 		int k = 0;
-	// 		val->ans[i][j] = 0;
-	// 		for(k = 0;k < val->m;k++)
-	// 		{
-	// 			val->ans[i][j] += val->m1[i][k]*val->m2[k][j];
-	// 		}
-	// 	}
-	// }
+	for(i = val->i1;i <= val->i2;i++)
+	{
+		for(j = 0;j <= val->l - 1;j++)
+		{
+			int k = 0;
+			val->ans[i][j] = 0;
+			for(k = 0;k < val->m;k++)
+			{
+				val->ans[i][j] += val->m1[i][k]*val->m2[k][j];
+			}
+		}
+	}
 }
 int main()
 {
@@ -89,13 +80,10 @@ int main()
 		i2 = i1 + (n/threads) - 1;
 		if(i == threads - 1) i2 = n - 1;
 	}
-	// i = 0;j = 0;
-	// int k = 0;
-	// ans[i][j] = 0;
-	// for(k = 0;k < m;k++)
-	// {
-	// 	ans[i][j] += m1[i][k]*m2[k][j];
-	// }
+	for(i = 0;i < threads;i++)
+	{
+		pthread_join(arr[i],NULL);
+	}
 	for(i = 0;i < n;i++)
 	{
 		for(j = 0;j < l;j++)
