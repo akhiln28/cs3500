@@ -1,6 +1,7 @@
 #include <pthread.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <time.h>
 typedef struct solve_{
 	//indices
 	int i1,i2;
@@ -13,8 +14,6 @@ typedef struct solve_{
 void *function(void *value){
 	solve *val = (solve*)value;
 	int i,j;
-	//printf("%d,%d\n",val->i1,val->i2);
-	// printf("%d\n",val->m);
 	for(i = val->i1;i <= val->i2;i++)
 	{
 		for(j = 0;j <= val->l - 1;j++)
@@ -61,7 +60,8 @@ int main()
 		scanf("%d",&m2[i][j]);
 	}
 	//input taken
-
+	clock_t t;
+	t = clock();
 	pthread_t arr[threads];
 	int i1 = 0,i2 = (n/threads) - 1;
 	for(i = 0;i < threads;i++)
@@ -84,6 +84,9 @@ int main()
 	{
 		pthread_join(arr[i],NULL);
 	}
+	t = clock() - t;
+	double time_taken = (double)t/CLOCKS_PER_SEC;
+	printf("time taken is %f\n",time_taken);
 	for(i = 0;i < n;i++)
 	{
 		for(j = 0;j < l;j++)
