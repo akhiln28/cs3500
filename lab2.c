@@ -10,7 +10,7 @@ typedef struct solve_{
 	//size of matirces
 	int n,m,l;
 }solve;
-
+//This function takes indices of two rows and computes the matrix for all the rows in between
 void *function(void *value){
 	solve *val = (solve*)value;
 	int i,j;
